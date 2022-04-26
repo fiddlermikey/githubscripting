@@ -28,7 +28,7 @@ jobs:
         with:
             script: |
                 const repoName = context.repo.repo;
-                const targetBranchName = github.event.pull_request.base.ref;
+                const targetBranchName = github.event_name;
                 console.log(`Repo name: ${repoName}`);
                 console.log(`Target branch name: ${targetBranchName}`);
         
