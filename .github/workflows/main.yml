@@ -36,6 +36,6 @@ jobs:
                 const repoName = context.repo.repo;
                 const targetBranchName = github.event_name;
                 console.log(`Repo name: ${repoName}`);
-                console.log(`Repo state: $(state)`);
+                console.log(`Repo state: ${state}`);
                 console.log(`Target branch name: ${targetBranchName}`);
         
