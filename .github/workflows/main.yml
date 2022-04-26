@@ -26,16 +26,21 @@ jobs:
         id: read-branch
         uses: actions/github-script@v4.0.2
         with:
-            script: |
-                const pulls = await github.pulls.list({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    state: 'open'
-                });
-                const state = pulls.data[0].state;
-                const repoName = context.repo.repo;
-                const targetBranchName = pulls.data[0].base.ref;
-                console.log(`Repo name: ${repoName}`);
-                console.log(`Repo state: ${state}`);
-                console.log(`Target branch name: ${targetBranchName}`);
+          script: |
+            const pulls = await github.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+            const state = pulls.data[0].state;
+            const repoName = context.repo.repo;
+            const targetBranchName = pulls.data[0].base.ref;
+            console.log(`Repo name: ${repoName}`);
+            console.log(`Repo state: ${state}`);
+            console.log(`Target branch name: ${targetBranchName}`);
+            const IS_RELEASE = (targetBranchName.startswith == 'release-')
+          if: IS_RELEASE = 'true' console.log(`IS_RELEASE is true`)
+
+
+
         
