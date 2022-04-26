@@ -30,7 +30,7 @@ jobs:
                 const pulls = await github.pulls.list({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
-                    state: 'open'
+                    state: 'closed'
                 });
                 const state = pulls.data[0].state;
                 const repoName = context.repo.repo;
