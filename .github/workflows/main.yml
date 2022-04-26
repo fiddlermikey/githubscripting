@@ -34,7 +34,7 @@ jobs:
                 });
                 const state = pulls.data[0].state;
                 const repoName = context.repo.repo;
-                const targetBranchName = github.event_name;
+                const targetBranchName = pulls.data[0].base;
                 console.log(`Repo name: ${repoName}`);
                 console.log(`Repo state: ${state}`);
                 console.log(`Target branch name: ${targetBranchName}`);
