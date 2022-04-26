@@ -5,8 +5,6 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -30,7 +28,7 @@ jobs:
         with:
             script: |
                 const repoName = context.repo.repo;
-                const targetBranchName = github.payload.pull_request.base_ref;
+                const targetBranchName = github.event.pull_request.base.ref;
                 console.log(`Repo name: ${repoName}`);
                 console.log(`Target branch name: ${targetBranchName}`);
         
