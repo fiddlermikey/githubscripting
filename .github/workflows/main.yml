@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,8 +27,15 @@ jobs:
         uses: actions/github-script@v4.0.2
         with:
             script: |
+                const pulls = await github.pulls.list({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    state: 'open'
+                });
+                const state = pulls.data[0].state;
                 const repoName = context.repo.repo;
-                const targetBranchName = github.event.pull_request.base.ref;
+                const targetBranchName = github.event_name;
                 console.log(`Repo name: ${repoName}`);
+                console.log(`Repo state: $(state)`);
                 console.log(`Target branch name: ${targetBranchName}`);
         
