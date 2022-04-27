@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: IS_RELEASE Testing
 
 # Controls when the workflow will run
 on:
@@ -38,7 +38,8 @@ jobs:
             console.log(`Repo state: ${state}`);
             console.log(`Target branch name: ${targetBranchName}`);
             const IS_RELEASE = (targetBranchName.startswith == 'release-')
-          if: IS_RELEASE = 'true' console.log(`IS_RELEASE is true`)
+            core.exportVariable('IS_RELEASE', `${IS_RELEASE}`);
+          if: env.IS_RELEASE =='true' console.log(`IS_RELEASE is true`)
 
 
 
