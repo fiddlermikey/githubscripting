@@ -37,6 +37,5 @@ jobs:
             console.log(`Repo name: ${repoName}`);
             console.log(`Repo state: ${state}`);
             console.log(`Target branch name: ${targetBranchName}`);
-            const IS_RELEASE = (targetBranchName.startswith == 'release-')
-            core.exportVariable('IS_RELEASE', `${IS_RELEASE}`);
+            const IS_RELEASE = (targetBranchName.startswith('release-'))
             console.log(`${IS_RELEASE}`);
