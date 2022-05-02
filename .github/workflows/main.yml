@@ -1,12 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: IS_RELEASE Testing
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,10 +37,5 @@ jobs:
             console.log(`Repo name: ${repoName}`);
             console.log(`Repo state: ${state}`);
             console.log(`Target branch name: ${targetBranchName}`);
-            const IS_RELEASE = (targetBranchName.startswith == 'release-')
-            core.exportVariable('IS_RELEASE', `${IS_RELEASE}`);
-
-
-
-
-        
+            const IS_RELEASE = (targetBranchName.startsWith('release-'));
+            console.log(`${IS_RELEASE}`);
