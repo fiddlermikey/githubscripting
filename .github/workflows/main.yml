@@ -39,7 +39,17 @@ jobs:
             console.log(`Target branch name: ${targetBranchName}`);
             const IS_RELEASE = (targetBranchName.startswith == 'release-')
             core.exportVariable('IS_RELEASE', `${IS_RELEASE}`);
-          if: env.IS_RELEASE =='true' console.log(`IS_RELEASE is true`)
+      - name: Script Debug Output
+        id: debug_output
+        uses: actions/github-script@v4.0.2
+        if: env.IS_RELEASE =='true'
+        with:
+          script: |
+            console.log('Debug Output');
+            console.log(`IS_RELEASE is true`);
+
+
+            
 
 
 
