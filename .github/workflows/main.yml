@@ -39,4 +39,4 @@ jobs:
             console.log(`Target branch name: ${targetBranchName}`);
             const IS_RELEASE = (targetBranchName.startswith == 'release-')
             core.exportVariable('IS_RELEASE', `${IS_RELEASE}`);
-            console.log(${`IS_RELEASE}`);
+            console.log(`${IS_RELEASE}`);
