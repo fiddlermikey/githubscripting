@@ -39,3 +39,8 @@ jobs:
             console.log(`Target branch name: ${targetBranchName}`);
             const IS_RELEASE = (targetBranchName.startsWith('release-'));
             console.log(`${IS_RELEASE}`);
+      - name: Read JSON Property
+        id: read-property
+        run: |
+          env_data=${{ fromJson(require('./test.json') }}
+          echo "env_data=$env_data"
