@@ -12,4 +12,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: display-latest
-        run: Write-Output "Latest release tag is ${{ release_url }}"
+        run: Write-Output "Latest release tag is ${{ upload_url }}"
