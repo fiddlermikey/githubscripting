@@ -10,7 +10,7 @@ jobs:
         id: latest_release
         uses: kaliber5/action-get-release@v1
         with:
-          token: ${{ secrets.GIHUB_TOKEN}}
+          token: ${{ github.token}}
           latest: true
           #owner: fiddlermikey
           #repo: githubscripting
