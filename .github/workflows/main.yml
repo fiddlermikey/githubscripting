@@ -13,5 +13,6 @@ jobs:
           script: |
             console.log('Begin Script')
             const repoName = context.repo.repo
-            console.log(repoName)
+            const repoOwner = context.repo.owner
+            console.log(repoOwner + '/' + repoName)
             console.log('End Script')
