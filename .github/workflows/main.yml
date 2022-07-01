@@ -18,7 +18,7 @@ jobs:
             console.log(repoOwner + '/' + repoName)
             core.exportVariable('repoName', repoName)
             core.exportVariable('repoOwner', repoOwner)
-            core.exportVariable('uploadURL', uploadURL)
+            core.exportVariable('uploadURL', latestRelease)
             console.log('End Script')
 
       - name: Read Variable
