@@ -9,8 +9,8 @@ jobs:
       - name: Setup build environment
         id: setup_env
         uses: actions/github-script@v4.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        #env:
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             console.log('Begin Script')
@@ -32,9 +32,9 @@ jobs:
         #    #echo "releaseURL: $(releaseURL)"
         #    #echo "releaseURL=$(releaseURL)" | Out-File $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Read Variable
-        id: read_var
-        run: |
-          echo "repoName=$Env:repoName"
-          echo "repoOwner=$Env:repoOwner"
+      #- name: Read Variable
+      #  id: read_var
+      #  run: |
+      #    echo "repoName=$Env:repoName"
+      #    echo "repoOwner=$Env:repoOwner"
           
