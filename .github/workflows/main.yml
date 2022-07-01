@@ -9,32 +9,7 @@ jobs:
       - name: Setup build environment
         id: setup_env
         uses: actions/github-script@v4.0.2
-        #env:
-        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             console.log('Begin Script')
-            #const upldURL = await github.repository.getLatestRelease({
-            #  repo: "githubscipting"
-            #  owner: "fiddlermikey"
-            #})
-            #const repoName = github.repository.split('/')[1]
-            #console.log(repoName)
-            #core.exportVariable('repoName', `repoName`);
-        #run: |
-        #    $repoName = "${{ github.repository }}".Split("/")
-        #    echo "Repo Name: $($repoName[-1])"
-        #    echo "Repo Owner: $($repoName[0])"
-        #    echo "REPO_NAME=$($repoName[-1])" | Out-File $env:GITHUB_ENV -Encoding utf8 -Append
-        #    echo "REPO_OWNER=$($repoName[0])" | Out-File $env:GITHUB_ENV -Encoding utf8 -Append
-
-        #    #$releaseURL = "${{ github.repository.getLatestRelease }}"
-        #    #echo "releaseURL: $(releaseURL)"
-        #    #echo "releaseURL=$(releaseURL)" | Out-File $env:GITHUB_ENV -Encoding utf8 -Append
-
-      #- name: Read Variable
-      #  id: read_var
-      #  run: |
-      #    echo "repoName=$Env:repoName"
-      #    echo "repoOwner=$Env:repoOwner"
-          
+            console.log('End Script')
