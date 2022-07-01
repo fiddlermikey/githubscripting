@@ -30,7 +30,7 @@ jobs:
             core.exportVariable('repoName', repoName)
             core.exportVariable('repoOwner', repoOwner)
             core.exportVariable('latestRelease', latestRelease)
-            core.exportVariable('upldURL', upldURL)
+            // core.exportVariable('upldURL', upldURL)
             console.log('End Script')
 
       #- name: Read Variable
