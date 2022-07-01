@@ -17,7 +17,6 @@ jobs:
         uses: robinraju/release-downloader@v1.4
         with:
           repository: "fiddlermikey/githubtesting"
-          token: ${{ github.token }}
           latest: true
           fileName: "*.zip"
 
