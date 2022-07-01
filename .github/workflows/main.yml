@@ -13,7 +13,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           script: |
-            console.log("Begin Script")
+            console.log('Begin Script')
             #const upldURL = await github.repository.getLatestRelease({
             #  repo: "githubscipting"
             #  owner: "fiddlermikey"
