@@ -31,12 +31,3 @@ jobs:
             core.exportVariable('repoOwner', repoOwner)
             core.exportVariable('latestRelease', latestRelease)
             console.log('End Script')
-
-      #- name: Read Variable
-      #  id: read_var
-      #  run: |
-      #    echo "repoName=$Env:repoName"
-      #    echo "repoOwner=$Env:repoOwner"
-          
-#             // const latestRelease = context.repo.getLatestRelease
-                      #core.exportVariable('uploadURL', uploadURL)
