@@ -16,9 +16,11 @@ jobs:
             const repoOwner = context.repo.owner
             const latestRelease = context.repo.getLatestRelease
             console.log(repoOwner + '/' + repoName)
+            const upldURL = latestRelease.data.upload_url
             core.exportVariable('repoName', repoName)
             core.exportVariable('repoOwner', repoOwner)
-            core.exportVariable('uploadURL', latestRelease)
+            core.exportVariable('latestRelease', latestRelease)
+            core.exportVariable('uploadURL', upldURL)
             console.log('End Script')
 
       - name: Read Variable
