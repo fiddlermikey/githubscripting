@@ -8,6 +8,16 @@ jobs:
     steps:
       - name: Setup build environment
         id: setup_env
+        uses: actions/github-script@v4.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        with:
+          script: |
+            console.log("Begin Script")
+            const upldURL = await github.repository.getLatestRelease({
+              repo: "githubscipting"
+              owner: "fiddlermikey"
+            })
         run: |
             $repoName = "${{ github.repository }}".Split("/")
             echo "Repo Name: $($repoName[-1])"
