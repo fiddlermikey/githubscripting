@@ -13,6 +13,10 @@ jobs:
             echo "Repo Name: $($repoName[-1])"
             echo "REPO_NAME=$($repoName[-1])" | Out-File $env:GITHUB_ENV -Encoding utf8 -Append
 
+            $releaseURL = "${{ github.repository.getLatestRelease }}"
+            echo "$releaseURL: $releaseURL"
+            echo "releaseURL=$releaseURL" | Out-File $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: Read Variable
         id: read_var
-        run: echo "RepoName=$Env:REPO_NAME.zip"
+        run: echo "releaseURL=$Env:releaseURL"
