@@ -14,7 +14,7 @@ jobs:
             console.log('Begin Script')
             const repoName = context.repo.repo
             const repoOwner = context.repo.owner
-            const latestRelease = context.repo.getLatestRelease.data.upload_url
+            const latestRelease = context.repo.getLatestRelease
             console.log(repoOwner + '/' + repoName)
             core.exportVariable('repoName', repoName)
             core.exportVariable('repoOwner', repoOwner)
