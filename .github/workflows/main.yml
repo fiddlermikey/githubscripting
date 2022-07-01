@@ -14,11 +14,9 @@ jobs:
             console.log('Begin Script')
             const repoName = context.repo.repo
             const repoOwner = context.repo.owner
-            #const latestRelease = context.repo.getLatestRelease
             console.log(repoOwner + '/' + repoName)
             core.exportVariable('repoName', repoName)
             core.exportVariable('repoOwner', repoOwner)
-            #core.exportVariable('uploadURL', uploadURL)
             console.log('End Script')
 
       - name: Read Variable
@@ -26,5 +24,6 @@ jobs:
         run: |
           echo "repoName=$Env:repoName"
           echo "repoOwner=$Env:repoOwner"
-          #echo "uploadURL=$Env:uploadURL"
-            
+          
+#             // const latestRelease = context.repo.getLatestRelease
+                      #core.exportVariable('uploadURL', uploadURL)
