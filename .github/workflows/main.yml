@@ -16,7 +16,7 @@ jobs:
       - name: Download Release Asset
         uses: robinraju/release-downloader@v1.4
         with:
-          repository: "fiddlermikey/githubtesting"
+          repository: "fiddlermikey/githubscripting"
           latest: true
           fileName: "*.zip"
 
