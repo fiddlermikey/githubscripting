@@ -38,7 +38,6 @@ jobs:
         run: |
           echo "repoName=$Env:repoName"
           echo "repoOwner=$Env:repoOwner"
-          echo "upldURL=$Env:upldURL"
           
 #             // const latestRelease = context.repo.getLatestRelease
                       #core.exportVariable('uploadURL', uploadURL)
