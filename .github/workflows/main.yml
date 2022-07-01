@@ -26,7 +26,7 @@ jobs:
             const repoOwner = context.repo.owner
             const latestRelease = context.repo.getLatestRelease
             console.log(repoOwner + '/' + repoName)
-            const upldURL = ${{ steps.latest_release.output.upload_url}}
+            const upldURL = ${{ steps.latest_release.outputs.upload_url}}
             core.exportVariable('repoName', repoName)
             core.exportVariable('repoOwner', repoOwner)
             core.exportVariable('latestRelease', latestRelease)
