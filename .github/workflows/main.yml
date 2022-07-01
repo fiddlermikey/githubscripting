@@ -13,4 +13,5 @@ jobs:
           script: |
             console.log('Begin Script')
             const repoName = context.repo.repo
+            console.log(repoName)
             console.log('End Script')
