@@ -1,41 +1,35 @@
-name: Get Latest Release
-on: [push, repository_dispatch, workflow_dispatch]
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
-  build:
-    name: FindLatestRelease
-    runs-on: windows-latest
+  publish:
+    name: Publish for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            artifact_name: integration-template_1.0.3.zip
+            asset_name: integration-template_1.0.3.zip
     steps:
-      - name: Get latest release
-        id: latest_release
-        uses: kaliber5/action-get-release@v1
+      - name: Download Release Asset
+        uses: robinraju/release-downloader@v1.4
         with:
-          token: ${{ github.token}}
+          repository: "fiddlermikey/githubtesting"
+          token: ${{ github.token }}
           latest: true
-          #owner: fiddlermikey
-          #repo: githubscripting
-          
+          fileName: "*.zip"
+          github-api-url: "https://keyfactor.com/api/v3"
 
-      - name: Setup build environment
-        id: setup_env
-        uses: actions/github-script@v4.0.2
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          script: |
-            console.log('Begin Script')
-            const repoName = context.repo.repo
-            const repoOwner = context.repo.owner
-            const latestRelease = context.repo.getLatestRelease
-            console.log(repoOwner + '/' + repoName)
-            const upldURL = ${{ steps.latest_release.output.upload_url}}
-            core.exportVariable('repoName', repoName)
-            core.exportVariable('repoOwner', repoOwner)
-            core.exportVariable('latestRelease', latestRelease)
-            console.log('End Script')
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/release/${{ matrix.artifact_name }}
+          asset_name: ${{ matrix.asset_name }}
+          tag: ${{ github.ref }}
 
-      - name: Read Variable
-        id: read_var
-        run: |
-          echo "repoName=$Env:repoName"
-          echo "repoOwner=$Env:repoOwner"
-          echo "upldURL=$Env:upldURL"
-          
