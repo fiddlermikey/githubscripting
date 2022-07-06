@@ -17,5 +17,10 @@ jobs:
       - name: Echo Values
         run: |
           echo "ID: ${{ steps.latest_release.outputs.id}}"
-          echo "Tag: ${{ steps.latest_release.outputs.tag_name}}"
+          echo "URL: ${{ steps.latest_release.outputs.url}}"
+          echo "HTML URL: ${{ steps.latest_release.outputs.html_url}}"
+          echo "Assets URL: ${{ steps.latest_release.outputs.assets_url}}"
           echo "upload_url: ${{ steps.latest_release.output.upload_url}}"
+          echo "Name: ${{ steps.latest_release.outputs.name}}"
+          echo "Tag: ${{ steps.latest_release.outputs.tag_name}}"
+          
