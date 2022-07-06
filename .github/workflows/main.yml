@@ -33,7 +33,7 @@ jobs:
 
       - name: Download Release Asset
         id: downloadAsset
-        uses: robinraju/release-downloader@main
+        uses: robinraju/release-downloader@v1.4
         with:
           repository: ${{ github.repository }}  
           token: ${{ github.token }}
