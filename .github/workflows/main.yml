@@ -27,12 +27,23 @@ jobs:
       - name: find latest tag
         uses: oprypin/find-latest-tag@v1
         with:
-          repository: ${{ github.repository_owner }}/${{ github.repository }}  
+          repository: ${{ github.repository }}  
           releases-only: true  
         id: latestReleaseTag  
 
+      - name: Download Release Asset
+        id: downloadAsset
+        uses: robinraju/release-downloader@main
+        with:
+          repository: ${{ github.repository }}  
+          token: ${{ secrets.GITHUB_TOKEN }}
+          latest: true
+          fileName: "*.zip"
+          github-api-url: "https://keyfactor.com/api/v3"
+        
       - name: debug output
         run: |
           echo "releaseArtifactName = ${{ env.releaseArtifactName}}"
           echo "latestReleaseTag = ${{ steps.latestReleaseTag.outputs.tag }}"
+          echo "latestReleaseTag (tag_name from release-downloader) = ${{ steps.downloadAsset.outputs.tag_name }}"
           
