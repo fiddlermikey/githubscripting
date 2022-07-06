@@ -23,4 +23,16 @@ jobs:
           echo "upload_url: ${{ steps.latest_release.output.upload_url}}"
           echo "Name: ${{ steps.latest_release.outputs.name}}"
           echo "Tag: ${{ steps.latest_release.outputs.tag_name}}"
+
+      - name: find latest tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: ${{ github.repository_owner }}/${{ inputs.targetRepo }}  
+          releases-only: true  
+        id: latestReleaseTag  
+
+      - name: debug output
+        run: |
+          echo "releaseArtifactName = ${{ env.releaseArtifactName}}"
+          echo "latestReleaseTag = ${{ steps.latestReleaseTag.outputs.tag }}"
           
