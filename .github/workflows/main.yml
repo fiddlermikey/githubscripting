@@ -36,7 +36,7 @@ jobs:
         uses: robinraju/release-downloader@main
         with:
           repository: ${{ github.repository }}  
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
           latest: true
           fileName: "*.zip"
           github-api-url: "https://keyfactor.com/api/v3"
