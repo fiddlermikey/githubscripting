@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Download Release Asset
         id: downloadAsset
-        uses: robinraju/release-downloader@v1.4
+        uses: robinraju/release-downloader@main
         with:
           repository: ${{ github.repository }}  
           token: ${{ github.token }}
