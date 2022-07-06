@@ -16,6 +16,6 @@ jobs:
           #repo: githubscripting
       - name: Echo Values
         run: |
-          echo "ID: ${{ latest_release.outputs.id}}"
-          echo "Tag: ${{ latest_release.outputs.tag_name}}"
-          echo "upload_url: ${{ latest_release.output.upload_url}}"
+          echo "ID: ${{ steps.latest_release.outputs.id}}"
+          echo "Tag: ${{ steps.latest_release.outputs.tag_name}}"
+          echo "upload_url: ${{ steps.latest_release.output.upload_url}}"
