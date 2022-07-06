@@ -6,31 +6,6 @@ jobs:
     name: FindLatestRelease
     runs-on: windows-latest
     steps:
-      - name: Get latest release
-        id: latest_release
-        uses: kaliber5/action-get-release@v1
-        with:
-          token: ${{ github.token}}
-          latest: true
-          #owner: fiddlermikey
-          #repo: githubscripting
-      - name: Echo Values
-        run: |
-          echo "ID: ${{ steps.latest_release.outputs.id}}"
-          echo "URL: ${{ steps.latest_release.outputs.url}}"
-          echo "HTML URL: ${{ steps.latest_release.outputs.html_url}}"
-          echo "Assets URL: ${{ steps.latest_release.outputs.assets_url}}"
-          echo "upload_url: ${{ steps.latest_release.output.upload_url}}"
-          echo "Name: ${{ steps.latest_release.outputs.name}}"
-          echo "Tag: ${{ steps.latest_release.outputs.tag_name}}"
-
-      - name: find latest tag
-        uses: oprypin/find-latest-tag@v1
-        with:
-          repository: ${{ github.repository }}  
-          releases-only: true  
-        id: latestReleaseTag  
-
       - name: Download Release Asset
         id: downloadAsset
         uses: robinraju/release-downloader@v1.4
@@ -43,7 +18,5 @@ jobs:
         
       - name: debug output
         run: |
-          echo "releaseArtifactName = ${{ env.releaseArtifactName}}"
-          echo "latestReleaseTag = ${{ steps.latestReleaseTag.outputs.tag }}"
-          echo "latestReleaseTag (tag_name from release-downloader) = ${{ steps.downloadAsset.outputs.tag_name }}"
+          echo "latestReleaseTag = ${{ steps.downloadAsset.outputs.tag_name }}"
           
