@@ -4,7 +4,7 @@ on: [push, repository_dispatch, workflow_dispatch]
 jobs:
   build:
     name: FindLatestRelease
-    runs-on: windows-latest
+    runs-on:  [self-hosted, kf-integ-test]
     steps:
       - name: Get latest release
         id: latest_release
@@ -14,28 +14,8 @@ jobs:
           latest: true
           #owner: fiddlermikey
           #repo: githubscripting
-          
-
-      - name: Setup build environment
-        id: setup_env
-        uses: actions/github-script@v4.0.2
-        with:
-          script: |
-            console.log('Begin Script')
-            const repoName = context.repo.repo
-            const repoOwner = context.repo.owner
-            const latestRelease = context.repo.getLatestRelease
-            console.log(repoOwner + '/' + repoName)
-            const upldURL = ${{ steps.latest_release.output.upload_url}}
-            core.exportVariable('repoName', repoName)
-            core.exportVariable('repoOwner', repoOwner)
-            core.exportVariable('latestRelease', latestRelease)
-            console.log('End Script')
-
-      - name: Read Variable
-        id: read_var
+      - name: Echo Values
         run: |
-          echo "repoName=$Env:repoName"
-          echo "repoOwner=$Env:repoOwner"
-          echo "upldURL=$Env:upldURL"
-          
+          echo "ID: ${{ latest_release.outputs.id}}"
+          echo "Tag: ${{ latest_release.outputs.tag_name}}"
+          echo "upload_url: ${{ latest_release.output.upload_url}}"
