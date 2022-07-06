@@ -4,7 +4,7 @@ on: [push, repository_dispatch, workflow_dispatch]
 jobs:
   build:
     name: FindLatestRelease
-    runs-on:  [self-hosted, kf-integ-test]
+    runs-on: windows-latest
     steps:
       - name: Get latest release
         id: latest_release
