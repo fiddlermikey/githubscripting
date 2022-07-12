@@ -34,5 +34,5 @@ jobs:
       - name: Exec PS Command
         id: exec-ps
         run: |
-          curl -o myfile.json https://raw.githubusercontent.com/Keyfactor/integration-template/init-orchestrator/integration-manifest.json
-          Get-Content myfile.json
+          Get-Content pam.myfile.json
+          Get-Content orch.myfile.json
