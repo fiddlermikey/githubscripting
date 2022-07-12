@@ -34,5 +34,7 @@ jobs:
       - name: Exec PS Command
         id: exec-ps
         run: |
-          Get-Content pam.myfile.json
-          Get-Content orch.myfile.json
+          Get-Content myfile.json
+          Copy-Item .\pam.myfile.json .\myfile.json -Force
+          Get-Content myfile.json
+          
