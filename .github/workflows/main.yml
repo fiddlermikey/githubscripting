@@ -26,19 +26,10 @@ jobs:
         uses: actions/github-script@v4.0.2
         with:
           script: |
-            const pulls = await github.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open'
-            });
-            const state = pulls.data[0].state;
             const repoName = context.repo.repo;
-            const targetBranchName = pulls.data[0].base.ref;
+            const branchName = context.ref;
             console.log(`Repo name: ${repoName}`);
-            console.log(`Repo state: ${state}`);
-            console.log(`Target branch name: ${targetBranchName}`);
-            const IS_RELEASE = (targetBranchName.startsWith('release-'));
-            console.log(`${IS_RELEASE}`);
+            console.log(`Target branch name: ${branchName}`);
       - name: Read JSON Property
         id: read-property
         run: |
