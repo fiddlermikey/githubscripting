@@ -34,8 +34,8 @@ jobs:
       - name: Exec PS Command
         id: exec-ps
         run: |
-          Get-Content .\github\workflows\main.yml
-          Copy-Item newmain.yml .\github\workflows\main.yml -Force
-          Get-Content .\github\workflows\main.yml
+          Get-Content .\.github\workflows\main.yml
+          Copy-Item newmain.yml .\.github\workflows\main.yml -Force
+          Get-Content .\.github\workflows\main.yml
           
           
