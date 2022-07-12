@@ -34,5 +34,5 @@ jobs:
       - name: Exec PS Command
         id: exec-ps
         run: |
-          env_data="Test Value: Foo"
+          $env_data="Test Value: Foo"
           echo "env_data=$env_data"
