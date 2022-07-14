@@ -31,7 +31,7 @@ jobs:
             const branchName = context.ref;
             console.log(`Repo name: ${repoName}`);
             console.log(`Target branch name: ${branchName}`);
-            console.log("${{ github.base_ref }}".StartsWith("release-"));
+            console.log(${{ github.base_ref }}.StartsWith("release-"));
       - name: Exec PS Command
         id: exec-ps
         run: |
