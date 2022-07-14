@@ -28,7 +28,7 @@ jobs:
         with:
           script: |
             const repoName = context.repo.repo;
-            const branchName = context.split('/');
+            const branchName = context.ref.split('/');
             const tBranchName = branchName[branchName.length -1];
             console.log(`Repo name: ${repoName}`);
             console.log(`Target branch name: ${branchName}`);
