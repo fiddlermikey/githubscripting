@@ -29,7 +29,7 @@ jobs:
           script: |
             const repoName = context.repo.repo;
             const branchName = context.ref;
-            const tBranchName = ${branchName}.split('/');
+            const tBranchName = branchName.split('/');
             console.log(`Repo name: ${repoName}`);
             console.log(`Target branch name: ${branchName}`);
             console.log(`Truncated branch name: ${tBranchName}`);
