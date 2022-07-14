@@ -29,9 +29,10 @@ jobs:
           script: |
             const repoName = context.repo.repo;
             const branchName = context.ref;
+            const ghRef = github.base_ref
             console.log(`Repo name: ${repoName}`);
             console.log(`Target branch name: ${branchName}`);
-            console.log( github.base_ref );
+            console.log( ${ghRef}.split('/');
       - name: Exec PS Command
         id: exec-ps
         run: |
