@@ -15,21 +15,21 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"      
-      - name: Read Branch
-        id: read-branch
-        uses: actions/github-script@v4.0.2
-        with:
-          script: |
-            const pulls = await github.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open'
-            });
-            const state = (typeof pulls.data[0].state == 'undefined') ? pulls.data[0].state : 'empty';
-            const repoName = context.repo.repo;
-            const targetBranchName = pulls.data[0].base.ref;
-            console.log(`Repo name: ${repoName}`);
-            console.log(`Repo state: ${state}`);
-            console.log(`Target branch name: ${targetBranchName}`);
-            const IS_RELEASE = (targetBranchName.startsWith('release-'));
-            console.log(`${IS_RELEASE}`);
+      #- name: Read Branch
+      #  id: read-branch
+      #  uses: actions/github-script@v4.0.2
+      #  with:
+      #    script: |
+      #      const pulls = await github.pulls.list({
+      #        owner: context.repo.owner,
+      #        repo: context.repo.repo,
+      #        state: 'open'
+      #      });
+      #      const state = (typeof pulls.data[0].state == 'undefined') ? pulls.data[0].state : 'empty';
+      #      const repoName = context.repo.repo;
+      #      const targetBranchName = pulls.data[0].base.ref;
+      #      console.log(`Repo name: ${repoName}`);
+      #      console.log(`Repo state: ${state}`);
+      #      console.log(`Target branch name: ${targetBranchName}`);
+      #      const IS_RELEASE = (targetBranchName.startsWith('release-'));
+      #      console.log(`${IS_RELEASE}`);
