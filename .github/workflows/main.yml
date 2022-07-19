@@ -25,7 +25,7 @@ jobs:
               repo: context.repo.repo,
               state: 'open'
             });
-            const state = (pulls.data[0].state != '') ? pulls.data[0].state : 'empty';
+            const state = (typeof pulls.data[0].state == 'undefined') ? pulls.data[0].state : 'empty';
             const repoName = context.repo.repo;
             const targetBranchName = pulls.data[0].base.ref;
             console.log(`Repo name: ${repoName}`);
