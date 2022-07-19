@@ -1,0 +1,12 @@
+name: New Replace Files Test
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Exec Another PS Command
+        id: exec-ps
+        run: |
+          Write-Output "Second File"
+          

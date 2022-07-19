@@ -1,41 +1,32 @@
-# This is a basic workflow to help you get started with Actions
-
-name: IS_RELEASE Testing
-
-# Controls when the workflow will run
+name: Replace Files Test
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  push:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: windows-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Read Branch
         id: read-branch
         uses: actions/github-script@v4.0.2
         with:
           script: |
-            const pulls = await github.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open'
-            });
-            const state = pulls.data[0].state;
             const repoName = context.repo.repo;
-            const targetBranchName = pulls.data[0].base.ref;
+            const branchName = context.ref.split('/');
+            const tBranchName = branchName[branchName.length -1];
+            const nBranchName = context.ref.split('/')[context.ref.split('/').length-1]
             console.log(`Repo name: ${repoName}`);
-            console.log(`Repo state: ${state}`);
-            console.log(`Target branch name: ${targetBranchName}`);
-            const IS_RELEASE = (targetBranchName.startsWith('release-'));
-            console.log(`${IS_RELEASE}`);
+            console.log(`Target branch name: ${branchName}`);
+            console.log(`Truncated branch name: ${tBranchName}`);
+            console.log(`nBranchName: ${nBranchName}`);
+      - name: Exec PS Command
+        id: exec-ps
+        run: |
+          Get-Content .\.github\workflows\main.yml
+          Copy-Item newmain.yml .\.github\workflows\main.yml -Force
+          Get-Content .\.github\workflows\main.yml
+          
+          
