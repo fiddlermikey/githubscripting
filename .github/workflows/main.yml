@@ -15,11 +15,13 @@ jobs:
         with:
           script: |
             const repoName = context.repo.repo;
-            # const branchName = context.ref.split('/');
-            # const tBranchName = branchName[branchName.length -1];
-            const branchName = context.ref.split('/')[context.ref.split('/').length-1]
+            const branchName = context.ref.split('/');
+            const tBranchName = branchName[branchName.length -1];
+            const nBranchName = context.ref.split('/')[context.ref.split('/').length-1]
             console.log(`Repo name: ${repoName}`);
-            console.log(`Branch Name: ${branchName}`);
+            console.log(`Target branch name: ${branchName}`);
+            console.log(`Truncated branch name: ${tBranchName}`);
+            console.log(`nBranchName: ${nBranchName}`);
       - name: Exec PS Command
         id: exec-ps
         run: |
