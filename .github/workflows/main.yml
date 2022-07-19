@@ -21,6 +21,7 @@ jobs:
             console.log(`Repo name: ${repoName}`);
             console.log(`Target branch name: ${branchName}`);
             console.log(`Truncated branch name: ${tBranchName}`);
+            console.log(`nBranchName: ${nBranchName}`);
       - name: Exec PS Command
         id: exec-ps
         run: |
